@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Navigate } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 
@@ -8,7 +8,7 @@ const AuthenticatedRoute = ({ children,fallback = "/login", ...props }) => {
     return accessToken && accessToken.length > 0 && idToken ? (
         <Route {...props}>{children}</Route>
     ) : (
-            <Navigate to={fallback} />
+            <Redirect to={fallback} />
     );
 }
 

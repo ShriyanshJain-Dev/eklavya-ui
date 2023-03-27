@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Routes as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import UnuthenticatedRoute from "./components/UnuthenticatedRoute";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import Navigation from "./components/Navigation";
@@ -14,29 +14,28 @@ export function Routes() {
     return (
         <StyledLayout>
             <Router>
-
                 <StyledPageContainer>
-                    <Route >
+                    <Switch>
                         <UnuthenticatedRoute
                             path={["/login", "/auth/login", "/auth/callback"]}
                             exact
                         />
+                    </Switch>
+                    <Switch>
                         <AuthenticatedRoute
                             path="*"
                         >
                             < Navigation
                             />
                         </AuthenticatedRoute>
-                    </Route>
-                    <Route>
                         <AuthenticatedRoute
                             path="/" exact>
                             <LandingScreen />
                         </AuthenticatedRoute>
-                        <UnuthenticatedRoute path="/login" exact>
+                        <UnuthenticatedRoute path="/login">
                             <Login />
                         </UnuthenticatedRoute>
-                    </Route>
+                    </Switch>
                 </StyledPageContainer>
             </Router>
         </StyledLayout>  
