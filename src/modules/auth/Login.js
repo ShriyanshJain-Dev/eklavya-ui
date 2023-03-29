@@ -7,7 +7,7 @@ const Login = () => {
         <StyledContainer>
             <StyledLoginFormContainer>
                <div>
-                <h1>EKLAVYA</h1>
+                <h1>EKLAVYA Hello</h1>
                </div>
             </StyledLoginFormContainer>
         </StyledContainer>
