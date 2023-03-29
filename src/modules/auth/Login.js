@@ -1,13 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 
 
 const Login = () => {
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+    const [screenHeight, setScreenHeight] = useState(window.innerHeight);
+
+    window.onresize = (event) => {
+        setScreenWidth(event.target.innerWidth);
+        setScreenHeight(event.target.innerHeight);
+    }
+    console.log("1232");
     return (
         <StyledContainer>
             <StyledLoginFormContainer>
                <div>
-                <h1>EKLAVYA Hello</h1>
+                <h1>EKLAVYA</h1>
                </div>
             </StyledLoginFormContainer>
         </StyledContainer>

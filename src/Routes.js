@@ -6,6 +6,9 @@ import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import Navigation from "./components/Navigation";
 import LandingScreen from "./modules/landing/LandingScreen";
 import Login from "./modules/auth/Login";
+import AuthCallback from "./modules/auth/AuthCallback";
+import AuthLogin from "./modules/auth/AuthLogin";
+import { NotFoundScreen } from "./modules/not-found/NotFoundScreen";
 
 
 
@@ -20,20 +23,29 @@ export function Routes() {
                             path={["/login", "/auth/login", "/auth/callback"]}
                             exact
                         />
-                    </Switch>
-                    <Switch>
                         <AuthenticatedRoute
                             path="*"
                         >
                             < Navigation
                             />
                         </AuthenticatedRoute>
+                    </Switch>
+                    <Switch>
                         <AuthenticatedRoute
                             path="/" exact>
                             <LandingScreen />
                         </AuthenticatedRoute>
+                        <UnuthenticatedRoute path="/auth/login" exact>
+                            <AuthLogin />
+                        </UnuthenticatedRoute>
+                        <UnuthenticatedRoute path="/auth/callback" exact>
+                            <AuthCallback />
+                        </UnuthenticatedRoute>
                         <UnuthenticatedRoute path="/login">
                             <Login />
+                        </UnuthenticatedRoute>
+                        <UnuthenticatedRoute path="*">
+                            <NotFoundScreen />
                         </UnuthenticatedRoute>
                     </Switch>
                 </StyledPageContainer>

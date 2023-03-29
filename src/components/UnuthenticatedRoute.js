@@ -3,12 +3,12 @@ import { Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 
-const UnauthenticatedRoute = ({ overridePath = "/", childern, ...props }) => {
+const UnauthenticatedRoute = ({ overridePath = "/", children, ...props }) => {
     const { accessToken, idToken } = useSelector((state) => state.auth);
     return accessToken && accessToken.length > 0 && idToken ? (
         <Redirect to={overridePath} />
     ) : (
-        <Route {...props}> {childern}</Route>
+        <Route {...props}> {children}</Route>
     );
 }
 
