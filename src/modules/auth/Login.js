@@ -1,10 +1,20 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
+import  {GoogleLogin} from "react-google-login";
 
 
 const Login = () => {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [screenHeight, setScreenHeight] = useState(window.innerHeight);
+
+    const onSuccess =(response) => {
+        console.log(response.profileObj)
+    }
+
+    const onFailure=(response) => {
+        console.log(response);
+        
+    }
 
     window.onresize = (event) => {
         setScreenWidth(event.target.innerWidth);
@@ -12,13 +22,19 @@ const Login = () => {
     }
     console.log("1232");
     return (
-        <StyledContainer>
-            <StyledLoginFormContainer>
-               <div>
-                <h1>EKLAVYA</h1>
-               </div>
-            </StyledLoginFormContainer>
-        </StyledContainer>
+        // <StyledContainer>
+        //     <StyledLoginFormContainer>
+               <GoogleLogin
+                    clent_id = "184991728615-1mp9d7lph7kpm9lg84fm0naf9atre5rh.apps.googleusercontent.com"
+                    buttonText="Login"
+                    onSuccess={onSuccess}
+                    inFailure={onFailure}
+                    cookiePolicy={'Single_host_origin'}
+                    isSignedIn={true}
+                >
+               </GoogleLogin>
+        //     </StyledLoginFormContainer>
+        // </StyledContainer>
         );
 }
 
